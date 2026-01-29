@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* Base text rhythm */
+body {
+  @apply antialiased;
+}
+
+/* Headings feel tighter & cleaner */
+h1, h2, h3 {
+  @apply tracking-tight;
+}
+
+/* Paragraph default spacing */
+p {
+  @apply leading-relaxed;
+}
+
+/* Better tap targets on mobile */
+button, a {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2;
+}
