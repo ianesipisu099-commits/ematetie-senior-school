@@ -10,10 +10,12 @@ import Container from "./container";
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/academics", label: "Academics" },
+   { href: "/leadership", label: "Leadership" },
   { href: "/admissions", label: "Admissions" },
   { href: "/student-life", label: "Student Life" },
   { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
+
 ];
 
 export default function SiteHeader() {

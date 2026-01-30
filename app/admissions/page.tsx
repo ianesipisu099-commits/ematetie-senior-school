@@ -28,38 +28,46 @@ const steps = [
   },
 ];
 
-const downloads = [
-  {
-    name: "Application Form (PDF)",
-    href: siteConfig.downloads.applicationForm,
-    note: "Download the form and submit to admissions.",
-  },
-  {
-    name: "Fee Structure (PDF)",
-    href: siteConfig.downloads.feeStructure,
-    note: "Refer to fees and payment guidelines.",
-  },
-  {
-    name: "Reporting Requirements (PDF)",
-    href: siteConfig.downloads.reportingRequirements,
-    note: "What to carry on reporting day.",
-  },
-];
-
-
-
 export default function AdmissionsPage() {
+  const downloads = [
+    {
+      name: "Application Form (PDF)",
+      href: siteConfig.downloads.applicationForm,
+      note: "Download the form and submit to admissions.",
+    },
+    {
+      name: "Fee Structure (PDF)",
+      href: siteConfig.downloads.feeStructure,
+      note: "Refer to fees and payment guidelines.",
+    },
+    {
+      name: "Reporting Requirements (PDF)",
+      href: siteConfig.downloads.reportingRequirements,
+      note: "What to carry on reporting day.",
+    },
+  ].filter((d) => Boolean(d.href)); // ✅ only keep real links
+
+  const admissionsBadge =
+    siteConfig.hero.badges.find((b) => b.toLowerCase().includes("admissions")) ??
+    "Admissions: OPEN";
+
   return (
     <Container>
       <div className="py-14">
         {/* Header */}
         <div className="max-w-3xl">
+          <div className="mb-3 inline-flex items-center rounded-full border px-3 py-1 text-xs text-gray-700">
+            {admissionsBadge}
+          </div>
+
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Admissions
           </h1>
+
           <p className="mt-4 text-gray-600 sm:text-lg">
-            We welcome new learners into a disciplined, supportive environment
-            focused on academic excellence and holistic development.
+            This is an LV1 admissions preview for {siteConfig.name}. Requirements,
+            reporting dates, and downloadable documents will be updated once the
+            school provides official information.
           </p>
         </div>
 
@@ -98,36 +106,49 @@ export default function AdmissionsPage() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-5 rounded-lg border bg-gray-50 px-4 py-3 text-xs text-gray-600">
+              Placeholder note: The school may add extra requirements (uniform
+              items, stationery list, medical forms, etc.).
+            </div>
           </div>
 
-          {/* Downloads (placeholders for now) */}
+          {/* Downloads */}
           <div className="rounded-xl border bg-white p-6">
             <h2 className="text-lg font-semibold">Downloads</h2>
             <p className="mt-2 text-gray-600">
-              Download the documents below.
-
+              Official documents will appear here once uploaded.
             </p>
 
-            <div className="mt-4 grid gap-3">
-  {downloads.map((d) => (
-    <a
-      key={d.name}
-      href={d.href}
-      className="group flex items-start justify-between gap-3 rounded-lg border p-4 hover:bg-gray-50"
-    >
-      <div>
-        <p className="font-medium group-hover:underline">{d.name}</p>
-        <p className="mt-1 text-sm text-gray-600">{d.note}</p>
-      </div>
-      <span className="text-xs text-gray-500">Download</span>
-    </a>
-  ))}
-</div>
-
-
-            <p className="mt-4 text-xs text-gray-500">
-              Tip: Later we’ll link real PDFs from <span className="font-medium">/public/docs</span>.
-            </p>
+            {downloads.length > 0 ? (
+              <div className="mt-4 grid gap-3">
+                {downloads.map((d) => (
+                  <a
+                    key={d.name}
+                    href={d.href}
+                    className="group flex items-start justify-between gap-3 rounded-lg border p-4 hover:bg-gray-50"
+                  >
+                    <div>
+                      <p className="font-medium group-hover:underline">{d.name}</p>
+                      <p className="mt-1 text-sm text-gray-600">{d.note}</p>
+                    </div>
+                    <span className="text-xs text-gray-500">Download</span>
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <div className="mt-4 rounded-lg border bg-gray-50 p-4 text-sm text-gray-700">
+                <p className="font-medium">Placeholder — documents not yet provided</p>
+                <p className="mt-1 text-gray-600">
+                  Application form, fee structure, and reporting requirements will
+                  be linked here after the school shares official PDFs.
+                </p>
+                <p className="mt-3 text-xs text-gray-500">
+                  Tip: Later we’ll link real PDFs from{" "}
+                  <span className="font-medium">/public/docs</span>.
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -135,8 +156,8 @@ export default function AdmissionsPage() {
         <div className="mt-10 rounded-xl border bg-gray-50 p-6 sm:p-8">
           <h2 className="text-lg font-semibold">Fees & Enquiries</h2>
           <p className="mt-2 text-gray-600">
-            For fee structure, reporting dates, or admission confirmation,
-            contact the admissions office.
+            For fee structure, reporting dates, or admission confirmation, contact
+            the admissions office.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">
@@ -158,4 +179,3 @@ export default function AdmissionsPage() {
     </Container>
   );
 }
-

@@ -1,31 +1,46 @@
 import Container from "../../components/container";
 import Image from "next/image";
+import { siteConfig } from "../../lib/site-config";
 
 const images = [
   {
-    src: "/imagess/gallery/gate.png",
-    title: "Main Gate",
-    note: "Welcome to Neutral Demo School",
+    src: "/images/gallery/school-gate.jpeg",
+    title: "School Entrance",
   },
-  { src: "/imagess/gallery/classroom.jpeg", title: "Classrooms", note: "Learning spaces" },
-  { src: "/imagess/gallery/students-learning.jpeg", title: "Students", note: "Student life" },
-  { src: "/imagess/gallery/science-lab.jpeg", title: "Facilities", note: "Our campus" },
-
+  {
+    src: "/images/gallery/classroom.jpeg",
+    title: "Classrooms",
+    note: "Placeholder image — classrooms and learning spaces.",
+  },
+  {
+    src: "/images/gallery/students-learning.jpeg",
+    title: "Student Life",
+    note: "Placeholder image — co-curricular and academic activities.",
+  },
+  {
+    src: "/images/gallery/science-lab.jpeg",
+    title: "School Facilities",
+    note: "Placeholder image — laboratories and facilities.",
+  },
 ];
 
 export default function GalleryPage() {
   return (
     <Container>
       <div className="py-14">
+        {/* Header */}
         <div className="max-w-3xl">
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Gallery
           </h1>
           <p className="mt-4 text-gray-600 sm:text-lg">
-            A glimpse into campus life, facilities, and learning activities.
+            A visual preview of life and learning at {siteConfig.name}. This LV1
+            gallery uses placeholders to demonstrate how the final gallery will
+            appear.
           </p>
         </div>
 
+        {/* Gallery grid */}
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {images.map((img) => (
             <div
@@ -48,12 +63,13 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        <p className="mt-10 text-xs text-gray-500">
-          Tip: Replace the images in <span className="font-medium">public/images/gallery</span>{" "}
-          and update the filenames in this page.
-        </p>
+        {/* LV1 note */}
+        <div className="mt-10 rounded-xl border bg-gray-50 p-5 text-sm text-gray-700 max-w-3xl">
+          <span className="font-medium">LV1 note:</span> Official school photos
+          (gate, classrooms, laboratories, staff, students, and activities) will
+          replace these placeholders once provided by the school.
+        </div>
       </div>
     </Container>
   );
 }
-

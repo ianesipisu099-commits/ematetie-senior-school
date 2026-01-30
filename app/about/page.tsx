@@ -1,74 +1,55 @@
 import Container from "../../components/container";
-
-const stats = [
-  { label: "Students", value: "800+" },
-  { label: "Teaching Staff", value: "45+" },
-  { label: "Clubs & Sports", value: "20+" },
-  { label: "Years of Excellence", value: "15+" },
-];
-
-const values = [
-  {
-    title: "Integrity",
-    desc: "We build character through honesty, discipline, and responsibility.",
-  },
-  {
-    title: "Excellence",
-    desc: "We push every learner to achieve their best academically and beyond.",
-  },
-  {
-    title: "Respect",
-    desc: "A safe and supportive environment for students, staff, and parents.",
-  },
-  {
-    title: "Community",
-    desc: "We partner with families and the community to nurture success.",
-  },
-];
+import { siteConfig } from "../../lib/site-config";
 
 export default function AboutPage() {
+  const stats = siteConfig.about?.stats ?? [];
+  const values = siteConfig.about?.values ?? [];
+
   return (
     <Container>
       <div className="py-14">
         {/* Top section */}
         <div className="max-w-3xl">
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            About Neutral Demo School
+            {siteConfig.about?.introTitle ?? `About ${siteConfig.name}`}
           </h1>
           <p className="mt-4 text-gray-600 sm:text-lg">
-            Neutral Demo School is a learner-focused institution committed to
-            academic excellence, discipline, and holistic development. We
-            support every student to grow in knowledge, skills, and character.
+            {siteConfig.about?.introBody}
           </p>
         </div>
 
         {/* Stats */}
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="rounded-lg border bg-white p-6">
-              <p className="text-2xl font-semibold">{s.value}</p>
-              <p className="mt-1 text-sm text-gray-600">{s.label}</p>
-            </div>
-          ))}
-        </div>
+        {stats.length > 0 ? (
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((s) => (
+              <div key={s.label} className="rounded-lg border bg-white p-6">
+                <p className="text-2xl font-semibold">{s.value}</p>
+                <p className="mt-1 text-sm text-gray-600">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        ) : null}
 
         {/* Mission / Vision */}
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <div className="rounded-lg border bg-white p-6">
             <h2 className="font-medium">Our Mission</h2>
             <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-              To provide quality education in a supportive environment that
-              nurtures academic excellence, integrity, and responsible
-              citizenship.
+              {siteConfig.about?.mission}
             </p>
+            <div className="mt-3 rounded-lg border bg-gray-50 px-3 py-2 text-xs text-gray-600">
+              Placeholder — official mission to be provided by the school.
+            </div>
           </div>
 
           <div className="rounded-lg border bg-white p-6">
             <h2 className="font-medium">Our Vision</h2>
             <p className="mt-3 text-sm text-gray-600 leading-relaxed">
-              To be a leading school recognized for outstanding performance and
-              holistic student development.
+              {siteConfig.about?.vision}
             </p>
+            <div className="mt-3 rounded-lg border bg-gray-50 px-3 py-2 text-xs text-gray-600">
+              Placeholder — official vision to be provided by the school.
+            </div>
           </div>
         </div>
 
@@ -77,7 +58,7 @@ export default function AboutPage() {
           <div className="max-w-3xl">
             <h2 className="text-xl font-semibold">Our Core Values</h2>
             <p className="mt-2 text-gray-600">
-              The principles that guide teaching, learning, and leadership.
+              {siteConfig.about?.valuesIntro}
             </p>
           </div>
 
@@ -88,6 +69,13 @@ export default function AboutPage() {
                 <p className="mt-2 text-sm text-gray-600">{v.desc}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-6 rounded-xl border bg-gray-50 p-5 text-sm text-gray-700">
+            <span className="font-medium">LV1 note:</span> Any section marked as a
+            placeholder will be updated after the school provides official
+            content (mission, vision, values descriptions, photos, and
+            documents).
           </div>
         </div>
 

@@ -5,6 +5,7 @@ export default function ContactPage() {
   return (
     <Container>
       <div className="py-14 max-w-3xl">
+        {/* Header */}
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           Contact Us
         </h1>
@@ -13,29 +14,35 @@ export default function ContactPage() {
           general information.
         </p>
 
+        {/* Contact cards */}
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
           <div className="rounded-lg border bg-white p-6">
             <p className="text-sm text-gray-500">Phone</p>
-            <p className="mt-1 font-medium">
-              {siteConfig.phoneDisplay}
-            </p>
+            <p className="mt-1 font-medium">{siteConfig.phoneDisplay}</p>
           </div>
 
           <div className="rounded-lg border bg-white p-6">
             <p className="text-sm text-gray-500">Email</p>
-            <p className="mt-1 font-medium">
-              {siteConfig.email}
-            </p>
+            <p className="mt-1 font-medium">{siteConfig.email}</p>
           </div>
 
           <div className="rounded-lg border bg-white p-6 sm:col-span-2">
             <p className="text-sm text-gray-500">Location</p>
-            <p className="mt-1 font-medium">
-              {siteConfig.addressLine}
+            <p className="mt-1 font-medium">{siteConfig.addressLine}</p>
+            <p className="mt-1 text-sm text-gray-600">
+              {siteConfig.locationShort}
             </p>
           </div>
         </div>
 
+        {/* LV1 location note */}
+        <div className="mt-6 rounded-xl border bg-gray-50 px-4 py-3 text-sm text-gray-700">
+          <span className="font-medium">LV1 note:</span> A map and detailed
+          directions will be added once the school confirms official location
+          details.
+        </div>
+
+        {/* WhatsApp CTA */}
         <div className="mt-10 rounded-xl border bg-gray-50 p-6 sm:p-8">
           <h2 className="text-lg font-semibold">Quick Enquiry</h2>
           <p className="mt-2 text-gray-600">
